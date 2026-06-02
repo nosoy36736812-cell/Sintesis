@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+ï»¿import React, { useState } from 'react';
 import { BookOpen, Sparkles, BrainCircuit, AlertCircle, CheckCircle2, List, FileQuestion, Lightbulb } from 'lucide-react';
 
 const WORKER_URL = "https://sintesis-worker.nosoy36736812.workers.dev/generate";
@@ -12,7 +12,7 @@ export default function App() {
 
   const handleGenerate = async () => {
     if (notes.length < 30) {
-      setError("Tus apuntes son muy cortos. Ingresa al menos un párrafo.");
+      setError("Tus apuntes son muy cortos. Ingresa al menos un parrafo.");
       return;
     }
     
@@ -30,7 +30,7 @@ export default function App() {
       const data = await response.json();
 
       if (!response.ok || data.status === "error") {
-        throw new Error(data.message || "Ocurrió un error al generar la guía.");
+        throw new Error(data.message || "Ocurrio un error al generar la guia.");
       }
 
       setGuide(data);
@@ -54,23 +54,21 @@ export default function App() {
     <div className="min-h-screen bg-gray-50 p-6 font-sans">
       <div className="max-w-5xl mx-auto space-y-8">
         
-        {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center space-x-3 text-indigo-600">
             <BrainCircuit size={40} />
-            <h1 className="text-4xl font-extrabold tracking-tight">Síntesis</h1>
+            <h1 className="text-4xl font-extrabold tracking-tight">Sintesis</h1>
           </div>
-          <p className="text-gray-500 text-lg">Convierte tus apuntes desordenados en guías maestras.</p>
+          <p className="text-gray-500 text-lg">Convierte tus apuntes desordenados en guias maestras.</p>
         </div>
 
-        {/* Input Section */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Materia (Opcional)</label>
               <input 
                 type="text" 
-                placeholder="Ej. Biología, Historia, Cálculo..."
+                placeholder="Ej. Biologia, Historia, Calculo..."
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
@@ -80,7 +78,7 @@ export default function App() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Tus Apuntes</label>
               <textarea 
                 rows="6"
-                placeholder="Pega tus apuntes desordenados aquí..."
+                placeholder="Pega tus apuntes desordenados aqui..."
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition resize-y"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
@@ -107,34 +105,30 @@ export default function App() {
               ) : (
                 <>
                   <Sparkles size={20} />
-                  <span>Generar Guía de Estudio</span>
+                  <span>Generar Guia de Estudio</span>
                 </>
               )}
             </button>
           </div>
         </div>
 
-        {/* Output Section */}
         {guide && (
-          <div id="guide-content" className="space-y-6 animate-fade-in-up">
+          <div id="guide-content" className="space-y-6">
             
-            {/* Meta & Summary */}
             <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-indigo-600">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">{guide.meta?.title}</h2>
               <div className="flex space-x-3 mb-6 text-sm">
                 <span className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full font-medium">{guide.meta?.subject}</span>
                 <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full">{guide.meta?.level}</span>
-                <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full">? ~{guide.meta?.estimated_study_time_minutes} min</span>
+                <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full">~ {guide.meta?.estimated_study_time_minutes} min</span>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">{guide.summary}</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               
-              {/* Main Structure (Takes up 2 columns) */}
               <div className="md:col-span-2 space-y-6">
                 
-                {/* Conceptos Clave */}
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                   <div className="flex items-center space-x-2 mb-4 text-indigo-600">
                     <BookOpen size={24} />
@@ -155,7 +149,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Estructura del Tema */}
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                   <div className="flex items-center space-x-2 mb-4 text-indigo-600">
                     <List size={24} />
@@ -183,19 +176,17 @@ export default function App() {
 
               </div>
 
-              {/* Sidebar (Takes up 1 column) */}
               <div className="space-y-6">
                 
-                {/* Preguntas de Repaso */}
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                   <div className="flex items-center space-x-2 mb-4 text-indigo-600">
                     <FileQuestion size={24} />
-                    <h3 className="text-xl font-bold text-gray-900">Auto-Evaluación</h3>
+                    <h3 className="text-xl font-bold text-gray-900">Auto-Evaluacion</h3>
                   </div>
                   <div className="space-y-4">
                     {guide.qa_pairs?.map((qa, idx) => (
                       <div key={idx} className="group cursor-pointer">
-                        <div className="font-medium text-gray-800 mb-1 group-hover:text-indigo-600 transition">¿{qa.question}</div>
+                        <div className="font-medium text-gray-800 mb-1 group-hover:text-indigo-600 transition">{qa.question}</div>
                         <div className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg hidden group-hover:block transition-all">
                           {qa.answer}
                         </div>
@@ -204,7 +195,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Tips de Estudio */}
                 <div className="bg-indigo-600 p-6 rounded-2xl shadow-sm text-white">
                   <div className="flex items-center space-x-2 mb-4">
                     <CheckCircle2 size={24} className="text-indigo-200" />
@@ -213,7 +203,7 @@ export default function App() {
                   <ul className="space-y-3">
                     {guide.study_tips?.map((tip, idx) => (
                       <li key={idx} className="flex items-start space-x-2 text-indigo-100 text-sm">
-                        <span className="mt-1 flex-shrink-0">•</span>
+                        <span className="mt-1 flex-shrink-0">â€¢</span>
                         <span>{tip}</span>
                       </li>
                     ))}
@@ -224,7 +214,7 @@ export default function App() {
             </div>
             
             <div className="text-center text-xs text-gray-400 mt-8">
-              Generado con {guide._meta?.provider === 'groq' ? 'Groq (Llama 3 70B)' : 'Cerebras'} • Guías restantes hoy: {guide._meta?.remaining_today}
+              Generado con {guide._meta?.provider === 'groq' ? 'Groq' : 'Cerebras'} â€¢ Guias restantes: {guide._meta?.remaining_today}
             </div>
           </div>
         )}
