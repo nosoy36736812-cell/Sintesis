@@ -192,9 +192,9 @@ function CreatePage({ onBack, onGuideReady }) {
         .create-sub { font-size: 15px; color: #6B7280; margin-bottom: 40px; }
         .form-group { margin-bottom: 28px; }
         label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .subject-input { width: 100%; padding: 14px 16px; border: 1.5px solid #D1D5DB; border-radius: 10px; font-size: 15px; font-family: 'DM Sans', sans-serif; transition: all 0.2s; background: white; }
+        .subject-input { color: #111827 !important; width: 100%; padding: 14px 16px; border: 1.5px solid #D1D5DB; border-radius: 10px; font-size: 15px; font-family: 'DM Sans', sans-serif; transition: all 0.2s; background: white; }
         .subject-input:focus { outline: none; border-color: #2563EB; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-        .notes-area { width: 100%; padding: 16px; border: 1.5px solid #D1D5DB; border-radius: 10px; font-size: 14px; font-family: 'DM Sans', sans-serif; transition: all 0.2s; background: white; resize: vertical; min-height: 220px; line-height: 1.7; }
+        .notes-area { color: #111827 !important; width: 100%; padding: 16px; border: 1.5px solid #D1D5DB; border-radius: 10px; font-size: 14px; font-family: 'DM Sans', sans-serif; transition: all 0.2s; background: white; resize: vertical; min-height: 220px; line-height: 1.7; }
         .notes-area:focus { outline: none; border-color: #2563EB; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
         .notes-footer { display: flex; justify-content: space-between; margin-top: 8px; }
         .char-count { font-size: 12px; color: #9CA3AF; }
@@ -395,3 +395,4 @@ export default function App() {
   if (view === "create") return <CreatePage onBack={() => setView("landing")} onGuideReady={handleGuideReady} />;
   if (view === "viewer") return <GuideViewer guide={guide} subject={subject} onBack={() => setView("landing")} onNew={() => setView("create")} />;
 }
+
